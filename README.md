@@ -2,6 +2,13 @@
 
 - [ ] Store sensitive info in .env file
 
+# How to use
+
+http://localhost:5173?event_id=[EVENT_UUID]
+
+Example (event with id 7):
+http://localhost:5173?event_id=53900b2f-fc17-446b-a298-a84b6e3dfc3c
+
 # React + TypeScript + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
