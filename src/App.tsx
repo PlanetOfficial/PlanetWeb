@@ -23,7 +23,7 @@ function App() {
 
   return (
     <>
-      {loading ? <p>Please wait...</p> : <p>{JSON.stringify(event)}</p>}
+      {loading ? <p>Please wait...</p> : <p><b>{JSON.stringify(event)}</b></p>}
     </>
   )
 }
