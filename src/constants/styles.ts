@@ -1,6 +1,4 @@
-import {StyleSheet} from 'react-native';
 import colors from './colors';
-import {s, vs} from 'react-native-size-matters';
 
 const styling = (theme: 'light' | 'dark') =>
   StyleSheet.create({

@@ -39,14 +39,12 @@ export default Event;
 
 const styles = {
   container: {
-    flex: 1,
-    backgroundColor: colors.light.background,
+    backgroundColor: colors.background,
     width: "40vw",
     height: "100vh",
-    margin: 0,
+    padding: 10,
   },
   destination: {
-    // margin: 20,
     borderRadius: 10,
   },
   destinationHeader: {
@@ -59,13 +57,12 @@ const styles = {
   destinationCard: {
     alignItems: "center",
     justifyContent: "center",
-    border: `1px solid ${colors.light.secondary}`,
+    border: `1px solid ${colors.secondary}`,
     borderRadius: 10,
     overflow: "hidden",
   },
   headerText: {
     fontSize: 15,
-    color: colors.light.neutral,
-    margin: 0,
+    color: colors.neutral,
   },
 };
