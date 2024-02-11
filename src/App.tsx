@@ -1,10 +1,15 @@
 import { useEffect, useState } from 'react'
 import './App.css'
 import { getEvent } from './api/event'
+import Event from './ui/event/Event'
+import { EventDetail } from './types'
 
 function App() {  
   const [loading, setLoading] = useState(false);
-  const [event, setEvent] = useState({});
+  const [event, setEvent] = useState<EventDetail | null>();
+
+  document.body.style.margin = "0";
+  document.body.style.padding = "0";
 
   useEffect(() => {
     const initializeEvent = async () => {
@@ -23,7 +28,7 @@ function App() {
 
   return (
     <>
-      {loading ? <p>Please wait...</p> : <p><b>{JSON.stringify(event)}</b></p>}
+      {loading || !event ? <p>Please wait...</p> : <Event event={event} />}
     </>
   )
 }
