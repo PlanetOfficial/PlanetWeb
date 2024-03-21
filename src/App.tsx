@@ -1,21 +1,20 @@
 import { useEffect, useState } from 'react'
 import './App.css'
 import { getEvent } from './api/event'
+import EventComponent from './EventComponent';
+import { DataProps } from './Interfaces';
+import DownloadComponent from './DownloadComponent';
 
 function App() {  
-  const [loading, setLoading] = useState(false);
-  const [event, setEvent] = useState({});
+  const [event, setEvent] = useState<DataProps | {}>({});
 
   useEffect(() => {
     const initializeEvent = async () => {
-      setLoading(true);
-
       const urlParams = new URLSearchParams(window.location.search);
       const event_id = urlParams.get('event_id') ?? "";
       const event = await getEvent(event_id);
 
       setEvent(event);
-      setLoading(false);
     }
 
     initializeEvent();
@@ -23,7 +22,15 @@ function App() {
 
   return (
     <>
-      {loading ? <p>Please wait...</p> : <p><b>{JSON.stringify(event)}</b></p>}
+      {'name' in event && 'datetime' in event && 'members' in event && 'destinations' in event ? (
+        <div>
+          <EventComponent name={event.name} datetime={event.datetime} members={event.members} destinations={event.destinations} />
+          <br></br>
+          <DownloadComponent />
+        </div>
+      ) : ( 
+        <p>Please wait...</p>
+      )}
     </>
   )
 }
