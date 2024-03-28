@@ -19,7 +19,7 @@ const EventComponent: React.FC<DataProps> = ({
     <div>
       <div>
         <h2>{name}</h2>
-        <p>{new Date(datetime).toLocaleString()}</p>
+        {datetime != 0 ? <p>{new Date(datetime).toLocaleString()}</p> : null}
       </div>
 
       <br></br>
