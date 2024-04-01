@@ -7,11 +7,17 @@ import DownloadComponent from './DownloadComponent';
 
 function App() {  
   const [event, setEvent] = useState<DataProps | {}>({});
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const initializeEvent = async () => {
       const urlParams = new URLSearchParams(window.location.search);
       const event_id = urlParams.get('event_id') ?? "";
+      if (event_id === "") {
+        setLoading(false);
+        return;
+      }
+
       const event = await getEvent(event_id);
 
       setEvent(event);
@@ -28,9 +34,9 @@ function App() {
           <br></br>
           <DownloadComponent />
         </div>
-      ) : ( 
+      ) : loading ? (
         <p>Please wait...</p>
-      )}
+      ) : null}
     </>
   )
 }
