@@ -9,3 +9,15 @@ export const getEvent = async (event_id: string) => {
   
     return myJson;
 };
+
+export const vote = async (suggestion_id: number, display_name: string) => {
+    const response = await fetch(EventAPIURL + `/event-web/vote`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ display_name: display_name, suggestion_id: suggestion_id })
+    });
+
+    return response.ok;
+}

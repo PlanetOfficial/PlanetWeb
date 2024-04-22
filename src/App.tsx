@@ -8,17 +8,19 @@ import DownloadComponent from './DownloadComponent';
 function App() {  
   const [event, setEvent] = useState<DataProps | {}>({});
   const [loading, setLoading] = useState(true);
+  const [event_id, setEventId] = useState("");
 
   useEffect(() => {
     const initializeEvent = async () => {
       const urlParams = new URLSearchParams(window.location.search);
-      const event_id = urlParams.get('event_id') ?? "";
-      if (event_id === "") {
+      const _event_id = urlParams.get('event_id') ?? "";
+      if (_event_id === "") {
         setLoading(false);
         return;
       }
 
-      const event = await getEvent(event_id);
+      setEventId(_event_id);
+      const event = await getEvent(_event_id);
 
       setEvent(event);
     }
@@ -30,7 +32,7 @@ function App() {
     <>
       {'name' in event && 'datetime' in event && 'members' in event && 'destinations' in event ? (
         <div>
-          <EventComponent name={event.name} datetime={event.datetime} members={event.members} destinations={event.destinations} />
+          <EventComponent event_id={event_id} name={event.name} datetime={event.datetime} members={event.members} destinations={event.destinations} />
           <br></br>
           <DownloadComponent />
         </div>

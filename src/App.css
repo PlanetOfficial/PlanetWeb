@@ -16,3 +16,17 @@ img {
   overflow: hidden;
   border: 2px solid #fff;
 }
+
+.like-icon {
+  width: 35px;
+  height: 35px;
+}
+
+.likes-container {
+  display: flex;
+  align-items: center;
+}
+
+.voters-container {
+  margin-left: 10px;
+}

@@ -20,17 +20,24 @@ interface Poi {
     start_datetime: null;
 }
   
+interface BrowserVote {
+    display_name: string;
+}
+
 interface Suggestion {
+    id: number;
     votes: any[];
     poi: Poi;
+    browser_votes: BrowserVote[];
 }
   
-interface Destination {
+export interface Destination {
     name: string;
     suggestions: Suggestion[];
 }
   
 export interface DataProps {
+    event_id: string;
     name: string;
     datetime: number;
     members: Member[];
